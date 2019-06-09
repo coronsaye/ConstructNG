@@ -39,7 +39,7 @@ describe 'Role Permissions API' do
       response '200', 'record found' do
         schema type: :array,
           properties: [{
-            role_id: { type: :integer, },
+            role_id: { type: :integer },
             permission_id: { type: :integer }
           }],
           required: [ 'role_id', 'permission_id' ]

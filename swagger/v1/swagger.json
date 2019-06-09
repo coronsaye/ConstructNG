@@ -175,7 +175,7 @@
       "post": {
         "summary": "Creates a user role",
         "tags": [
-          "User Role"
+          "CreateRole"
         ],
         "consumes": [
           "application/json",
@@ -206,13 +206,46 @@
             "description": "invalid request"
           }
         }
+      },
+      "get": {
+        "summary": "Retrieves all roles",
+        "tags": [
+          "GetAllRoles"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name"
+              ]
+            }
+          },
+          "404": {
+            "description": "records not not"
+          }
+        }
       }
     },
     "/api/v1/roles/{id}": {
       "get": {
         "summary": "Retrieves a role",
         "tags": [
-          "User Roles"
+          "GetRoleById"
         ],
         "produces": [
           "application/json",
