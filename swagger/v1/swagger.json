@@ -1,0 +1,255 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "CONSTRUCTION ONLINE API",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/v1/permissions": {
+      "post": {
+        "summary": "Creates a permission",
+        "tags": [
+          "Permission"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "permission",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "permission created successfull"
+          },
+          "422": {
+            "description": "invalid request"
+          }
+        }
+      }
+    },
+    "/api/v1/permissions/{id}": {
+      "get": {
+        "summary": "Retrieves a permission",
+        "tags": [
+          "Permissions"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "name found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name"
+              ]
+            }
+          },
+          "404": {
+            "description": "permission not found"
+          }
+        }
+      }
+    },
+    "/api/v1/role_permissions": {
+      "post": {
+        "summary": "Creates a role permission",
+        "tags": [
+          "Role Permission"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "role_permission",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "role_id": {
+                  "type": "integer"
+                },
+                "permission_id": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "role_id",
+                "permission_id"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "role permissiin created successfull"
+          },
+          "422": {
+            "description": "invalid request"
+          }
+        }
+      }
+    },
+    "/api/v1/role_permissions/{id}": {
+      "get": {
+        "summary": "Retrieves role permissions",
+        "tags": [
+          "Role Permissions"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "record found",
+            "schema": {
+              "type": "array",
+              "properties": [
+                {
+                  "role_id": {
+                    "type": "integer"
+                  },
+                  "permission_id": {
+                    "type": "integer"
+                  }
+                }
+              ],
+              "required": [
+                "role_id",
+                "permission_id"
+              ]
+            }
+          },
+          "404": {
+            "description": "record not found"
+          }
+        }
+      }
+    },
+    "/api/v1/roles": {
+      "post": {
+        "summary": "Creates a user role",
+        "tags": [
+          "User Role"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "role",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "role created successfull"
+          },
+          "422": {
+            "description": "invalid request"
+          }
+        }
+      }
+    },
+    "/api/v1/roles/{id}": {
+      "get": {
+        "summary": "Retrieves a role",
+        "tags": [
+          "User Roles"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "role found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name"
+              ]
+            }
+          },
+          "404": {
+            "description": "record not found"
+          }
+        }
+      }
+    }
+  }
+}
