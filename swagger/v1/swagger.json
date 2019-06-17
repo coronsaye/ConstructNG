@@ -282,6 +282,102 @@
             "description": "record not found"
           }
         }
+      },
+      "post": {
+        "summary": "Delete a role record",
+        "tags": [
+          "DeleteRole"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "role deleted successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name"
+              ]
+            }
+          },
+          "404": {
+            "description": "record not found"
+          }
+        }
+      }
+    },
+    "/api/v1/users": {
+      "get": {
+        "summary": "Retrieves all users",
+        "tags": [
+          "GetAllUserss"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "phone_no": {
+                  "type": "string"
+                },
+                "username": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "default_password": {
+                  "type": "string"
+                },
+                "parent": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "username",
+                "email",
+                "default_password"
+              ]
+            }
+          },
+          "404": {
+            "description": "records not not"
+          }
+        }
       }
     }
   }

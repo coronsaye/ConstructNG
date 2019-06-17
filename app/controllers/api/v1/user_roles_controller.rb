@@ -1,51 +1,51 @@
 class Api::V1::UserRolesController < ApplicationController
-  before_action :set_api_v1_user_role, only: [:show, :update, :destroy]
+  before_action :set_user_role, only: [:show, :update, :destroy]
 
   # GET /api/v1/user_roles
   def index
-    @api_v1_user_roles = Api::V1::UserRole.all
+    @user_roles = UserRole.all
 
-    render json: @api_v1_user_roles
+    render json: @user_roles
   end
 
   # GET /api/v1/user_roles/1
   def show
-    render json: @api_v1_user_role
+    render json: @user_role
   end
 
   # POST /api/v1/user_roles
   def create
-    @api_v1_user_role = Api::V1::UserRole.new(api_v1_user_role_params)
+    @user_role = UserRole.new(user_role_params)
 
-    if @api_v1_user_role.save
-      render json: @api_v1_user_role, status: :created, location: @api_v1_user_role
+    if @user_role.save
+      render json: @user_role, status: :created, location: @user_role
     else
-      render json: @api_v1_user_role.errors, status: :unprocessable_entity
+      render json: @user_role.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /api/v1/user_roles/1
   def update
-    if @api_v1_user_role.update(api_v1_user_role_params)
-      render json: @api_v1_user_role
+    if @user_role.update(user_role_params)
+      render json: @user_role
     else
-      render json: @api_v1_user_role.errors, status: :unprocessable_entity
+      render json: @user_role.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /api/v1/user_roles/1
   def destroy
-    @api_v1_user_role.destroy
+    @user_role.destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_api_v1_user_role
-      @api_v1_user_role = Api::V1::UserRole.find(params[:id])
+    def set_user_role
+      @user_role = UserRole.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
-    def api_v1_user_role_params
-      params.fetch(:api_v1_user_role, {})
+    def user_role_params
+      params.fetch(:user_role, {}).permit(:role, :user)
     end
 end

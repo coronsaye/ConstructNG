@@ -1,26 +1,26 @@
 class Api::V1::UserAddressesController < ApplicationController
-  before_action :set_api_v1_user_address, only: [:show, :update, :destroy]
+  before_action :set_user_address, only: [:show, :update, :destroy]
 
   # GET /api/v1/user_addresses
   def index
-    @api_v1_user_addresses = Api::V1::UserAddsuppress.all
+    @user_addresses = UserAddress.all
 
-    render json: @api_v1_user_addresses
+    render json: @user_addresses
   end
 
   # GET /api/v1/user_addresses/1
   def show
-    render json: @api_v1_user_address
+    render json: @user_address
   end
 
   # POST /api/v1/user_addresses
   def create
-    @api_v1_user_address = Api::V1::UserAddress.new(api_v1_user_address_params)
+    @user_address = UserAddress.new(user_address_params)
 
-    if @api_v1_user_address.save
-      render json: @api_v1_user_address, status: :created, location: @api_v1_user_address
+    if @user_address.save
+      render json: @user_address
     else
-      render json: @api_v1_user_address.errors, status: :unprocessable_entity
+      render json: @user_address.errors, status: :unprocessable_entity
     end
   end
 
@@ -41,11 +41,11 @@ class Api::V1::UserAddressesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_api_v1_user_address
-      @api_v1_user_address = Api::V1::UserAddress.find(params[:id])
+      @api_v1_user_address = UserAddress.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def api_v1_user_address_params
-      params.fetch(:api_v1_user_address, {})
+      params.fetch(:user_address, {}).permit(:user,:address)
     end
 end

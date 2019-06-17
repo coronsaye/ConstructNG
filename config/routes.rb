@@ -11,6 +11,15 @@ Rails.application.routes.draw do
       resources :permissions
       resources :role_permissions
       resources :manufacturers
+      resources :occupations
+      resources :products
+      resources :sectors
+      resources :states
+      resources :suppliers
+      resources :tax_classes
+      resources :tax_rates
+      resources :product_images
+      resources :users
     end
   end
 end

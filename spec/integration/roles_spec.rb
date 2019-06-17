@@ -108,6 +108,7 @@ describe 'Roles API' do
         run_test!
       end
     end
+    
   end
 
 end

@@ -1,51 +1,51 @@
 class Api::V1::OccupationsController < ApplicationController
-  before_action :set_api_v1_occupation, only: [:show, :update, :destroy]
+  before_action :set_occupation, only: [:show, :update, :destroy]
 
   # GET /api/v1/occupations
   def index
-    @api_v1_occupations = Api::V1::Occupation.all
+    @occupations = Occupation.all
 
-    render json: @api_v1_occupations
+    render json: @occupations
   end
 
   # GET /api/v1/occupations/1
   def show
-    render json: @api_v1_occupation
+    render json: @occupation
   end
 
   # POST /api/v1/occupations
   def create
-    @api_v1_occupation = Api::V1::Occupation.new(api_v1_occupation_params)
+    @occupation = Api::V1::Occupation.new(occupation_params)
 
-    if @api_v1_occupation.save
-      render json: @api_v1_occupation, status: :created, location: @api_v1_occupation
+    if @occupation.save
+      render json: @occupation, status: :created, location: @occupation
     else
-      render json: @api_v1_occupation.errors, status: :unprocessable_entity
+      render json: @occupation.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /api/v1/occupations/1
   def update
-    if @api_v1_occupation.update(api_v1_occupation_params)
-      render json: @api_v1_occupation
+    if @occupation.update(occupation_params)
+      render json: @occupation
     else
-      render json: @api_v1_occupation.errors, status: :unprocessable_entity
+      render json: @occupation.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /api/v1/occupations/1
   def destroy
-    @api_v1_occupation.destroy
+    @occupation.destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_api_v1_occupation
-      @api_v1_occupation = Api::V1::Occupation.find(params[:id])
+    def set_occupation
+      @occupation = Occupation.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
-    def api_v1_occupation_params
-      params.fetch(:api_v1_occupation, {})
+    def occupation_params
+      params.require(:occupation).permit(:name)
     end
 end
