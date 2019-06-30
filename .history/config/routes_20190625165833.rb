@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :roles, :defaults => { :format => 'json' }
+      resources :roles :defaults => { :format => 'json' }
       resources :permissions
       resources :role_permissions
       resources :manufacturers
