@@ -8,18 +8,31 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :roles, :defaults => { :format => 'json' }
-      resources :permissions
-      resources :role_permissions
-      resources :manufacturers
-      resources :occupations
-      resources :products
-      resources :sectors
-      resources :states
-      resources :suppliers
-      resources :tax_classes
-      resources :tax_rates
-      resources :product_images
-      resources :users
+      resources :permissions, :defaults => { :format => 'json' }
+      resources :role_permissions, :defaults => { :format => 'json' }
+      resources :manufacturers, :defaults => { :format => 'json' }
+      resources :occupations, :defaults => { :format => 'json' }
+      resources :products, :defaults => { :format => 'json' }
+      resources :sectors, :defaults => { :format => 'json' }
+      resources :states, :defaults => { :format => 'json' }
+      resources :suppliers, :defaults => { :format => 'json' }
+      resources :tax_classes, :defaults => { :format => 'json' }
+      resources :tax_rates, :defaults => { :format => 'json' }
+      resources :product_images, :defaults => { :format => 'json' }
+      resources :users, :defaults => { :format => 'json' }
+      resources :users, only: :create do
+        collection do
+          post 'confirm'
+          post 'login'
+        end
+      end
+
+      resources :accounts, only: :create do
+        collection do
+          post 'register'
+          post 'signin'
+        end
+      end
     end
   end
 end

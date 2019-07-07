@@ -1,5 +1,7 @@
 class Api::V1::RolesController < ApplicationController
+  before_action :authenticate_request
   before_action :set_role, only: [:show, :update, :destroy]
+  
 
   # GET /api/v1/roles
   def index
