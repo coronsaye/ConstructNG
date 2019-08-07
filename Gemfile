@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.5.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
@@ -19,6 +19,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'jwt'
+gem 'railties'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
