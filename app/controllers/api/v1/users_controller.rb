@@ -48,7 +48,7 @@ class Api::V1::UsersController < ApplicationController
       if user.confirmed_at?
 
         token = JsonWebToken.encode(user_id: user.id)
-        render json: { access_token: token, date_created: Time.now, expiry_date: Time.new + 1200, user_id: user.email  }, status: :ok
+        render json: { access_token: token, date_created: Time.now, expiry_date: Time.new + 1200 ,user_id: user.email  }, status: :ok
 
       else
 

@@ -1,4 +1,5 @@
 class Api::V1::SectorsController < ApplicationController
+  before_action :authenticate_request
   before_action :set_sector, only: [:show, :update, :destroy]
 
   # GET /api/v1/sectors

@@ -1,4 +1,5 @@
 class Api::V1::UserAddressesController < ApplicationController
+  before_action :authenticate_request
   before_action :set_user_address, only: [:show, :update, :destroy]
 
   # GET /api/v1/user_addresses

@@ -1,4 +1,5 @@
 class Api::V1::RolePermissionsController < ApplicationController
+  before_action :authenticate_request
   before_action :set_role_permission, only: [:show, :update, :destroy]
 
   # GET /api/v1/role_permissions

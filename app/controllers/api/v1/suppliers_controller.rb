@@ -1,4 +1,5 @@
 class Api::V1::SuppliersController < ApplicationController
+  before_action :authenticate_request
   before_action :set_supplier, only: [:show, :update, :destroy]
 
   # GET /api/v1/suppliers

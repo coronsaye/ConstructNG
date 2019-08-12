@@ -1,4 +1,5 @@
 class Api::V1::TaxRatesController < ApplicationController
+  before_action :authenticate_request
   before_action :set_tax_rate, only: [:show, :update, :destroy]
 
   # GET /api/v1/tax_rates
